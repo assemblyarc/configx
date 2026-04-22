@@ -18,11 +18,11 @@
 
 ## Install
 
-### Homebrew (macOS + Linux)
+<!-- ### Homebrew (macOS + Linux)
 
 ```bash
 brew install configx
-```
+``` -->
 
 ### cargo install
 
