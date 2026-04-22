@@ -1,0 +1,34 @@
+[package]
+name = "configx"
+version = "0.1.0"
+edition = "2024"
+description = "A TUI wizard for generating modular, well-commented Neovim configs"
+authors = ["Assembly Arc"]
+license = "MIT"
+repository = "https://github.com/assemblyarc/configx"
+homepage = "https://github.com/assemblyarc/configx"
+readme = "README.md"
+keywords = ["neovim", "tui", "config", "ratatui"]
+categories = ["command-line-utilities"]
+rust-version = "1.85"
+
+[[bin]]
+name = "configx"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = { version = "0.28", features = ["event-stream"] }
+color-eyre = "0.6"
+anyhow = "1"
+dirs = "5"
+strum = { version = "0.26", features = ["derive"] }
+strum_macros = "0.26"
+indexmap = "2"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
