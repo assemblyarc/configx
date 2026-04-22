@@ -36,7 +36,7 @@ pub fn generate(state: &WizardState) -> String {
     out.push_str("map(\"n\", \"<C-j>\", \"<C-w>j\", { desc = \"Move to lower window\" })\n");
     out.push_str("map(\"n\", \"<C-k>\", \"<C-w>k\", { desc = \"Move to upper window\" })\n");
     out.push_str("map(\"n\", \"<C-l>\", \"<C-w>l\", { desc = \"Move to right window\" })\n");
-    out.push_str("\n");
+    out.push('\n');
 
     out.push_str(
         "-- ── Buffer navigation ──────────────────────────────────────────────────────\n",

@@ -115,16 +115,16 @@ fn generate_dry_run(state: &WizardState) -> Result<()> {
 }
 
 fn collect_files(state: &WizardState) -> Vec<(&'static str, String)> {
-    let mut files: Vec<(&str, String)> = Vec::new();
-
-    files.push(("init.lua", init::generate(state)));
-    files.push(("lua/config/options.lua", options::generate().to_string()));
-    files.push(("lua/config/keymaps.lua", keymaps::generate(state)));
-    files.push(("lua/config/autocmds.lua", autocmds::generate().to_string()));
-    files.push((
-        "lua/plugins/colorscheme.lua",
-        plugins::colorscheme::generate(state),
-    ));
+    let mut files: Vec<(&str, String)> = vec![
+        ("init.lua", init::generate(state)),
+        ("lua/config/options.lua", options::generate().to_string()),
+        ("lua/config/keymaps.lua", keymaps::generate(state)),
+        ("lua/config/autocmds.lua", autocmds::generate().to_string()),
+        (
+            "lua/plugins/colorscheme.lua",
+            plugins::colorscheme::generate(state),
+        ),
+    ];
 
     if state.has_feature(Feature::Treesitter) {
         files.push((
