@@ -14,7 +14,7 @@ pub fn generate(state: &WizardState) -> String {
             }
 
             let setup = format!(
-                "    lspconfig.{}.setup({{ capabilities = capabilities }})",
+                "    vim.lsp.config(\"{}\", {{ capabilities = capabilities }})",
                 entry.lspconfig_name
             );
             if !server_setups.contains(&setup) {
@@ -52,7 +52,7 @@ pub fn generate(state: &WizardState) -> String {
     if !mason_pkgs.iter().any(|p| p.contains("lua-language-server")) {
         mason_pkgs.push(lua_ls_pkg.to_string());
         server_setups.push(
-            "    lspconfig.lua_ls.setup({\n      capabilities = capabilities,\n      settings = { Lua = { diagnostics = { globals = { \"vim\" } } } },\n    })".to_string(),
+            "    vim.lsp.config(\"lua_ls\", {\n      capabilities = capabilities,\n      settings = { Lua = { diagnostics = { globals = { \"vim\" } } } },\n    })".to_string(),
         );
     }
 
@@ -122,8 +122,6 @@ return {{{{
       "folke/neodev.nvim",
     }},
     config = function()
-      local lspconfig = require("lspconfig")
-
       -- Extend LSP capabilities with nvim-cmp completion support.
       -- This tells the server what completion features the client supports.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
