@@ -8,7 +8,7 @@ pub fn generate(state: &WizardState) -> String {
 
     for &lang in &state.languages {
         for entry in lsp_entries_for(lang) {
-            let pkg = format!("    \"{}\", -- {}", entry.mason_pkg, entry.note);
+            let pkg = format!("    \"{}\", -- {}", entry.lspconfig_name, entry.note);
             if !mason_pkgs.contains(&pkg) {
                 mason_pkgs.push(pkg);
             }
